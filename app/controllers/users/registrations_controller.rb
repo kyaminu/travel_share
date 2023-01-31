@@ -31,6 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, status: :see_other # 登録失敗時のrespond_withにerror出したいので、ここで303 statusを追加
     end
   end
+  
+  def show
+    @user = User.find(params[:id])
+  end
 
   # GET /resource/edit
   # def edit

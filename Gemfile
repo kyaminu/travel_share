@@ -5,6 +5,7 @@ ruby "3.1.2"
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'rails-i18n'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
