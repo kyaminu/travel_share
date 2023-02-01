@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+  resources :trips do
+    resources :trip_contents
+  end
   root 'home#top'
   resources :trips
   devise_for :users, controllers: {
