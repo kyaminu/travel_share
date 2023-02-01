@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @trip_content %>
+
+<div>
+  <%= link_to "Edit this trip content", edit_trip_trip_content_path(id: @trip_content) %> |
+  <%= link_to "Back to trip contents", trip_trip_contents_path %>
+
+  <%= button_to "Destroy this trip content", trip_trip_content_path, method: :delete %>
+</div>

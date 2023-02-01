@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_31_043934) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_01_054506) do
+  create_table "trip_contents", force: :cascade do |t|
+    t.datetime "timestamp"
+    t.text "content"
+    t.integer "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_trip_contents_on_trip_id"
+  end
+
   create_table "trip_users", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "trip_id", null: false
@@ -38,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_043934) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "trip_contents", "trips"
   add_foreign_key "trip_users", "trips"
   add_foreign_key "trip_users", "users"
 end
