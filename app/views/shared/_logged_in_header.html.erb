@@ -1,4 +1,17 @@
-<%= link_to "Profile", edit_user_registration_path %>
-<%= link_to "Friends", "#"%>
-<%= link_to "notification", "#"%>
-<%= button_to "Log out", destroy_user_session_path, method: :delete%>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    一覧
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><%= link_to "Profile", edit_user_registration_path %></li>
+    <li><%= link_to "Friends", "#"%></li>
+    <li><%= link_to "notification", "#"%></li>
+    <li><%= button_to "Log out", destroy_user_session_path, method: :delete%></li>
+  </ul>  
+</div>
+
+
+
+
+
+
