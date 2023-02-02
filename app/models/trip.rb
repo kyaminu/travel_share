@@ -16,7 +16,6 @@ class Trip < ApplicationRecord
             {timestamp:'14:00:00',content:'なんばグランド花月'},
             {timestamp:'16:00:00',content:'KAMON HOTEL なんば'}
           ],
-<<<<<<< HEAD
         "1"=>{"1"=>[ #東京 1日目
             {timestamp:'10:00:00',content:'乃木坂駅'},
             {timestamp:'10:40:00',content:'サントリー美術館'},
@@ -61,19 +60,8 @@ class Trip < ApplicationRecord
             {timestamp:'14:30:00',content:'福太郎 天神テルラ店'},
             {timestamp:'16:00:00',content:'博多麺もつ屋'},
             {timestamp:'18:00:00',content:'天神屋台街'}
-=======
-        "1"=>{1 =>[
-            {timestamp:'11:00:00',content:'東京タワーに向かう'},
-            {timestamp:'13:00:00',content:'メシ食べる'},
-            {timestamp:'15:00:00',content:'スカイツリーに向かう'}
-          ],
-          2 => [
-            { timestamp: '11:00:00', content: '東京タワーに向かう' },
-            { timestamp: '13:00:00', content: 'メシ食べる' },
-            { timestamp: '15:00:00', content: 'スカイツリーに向かう' },
->>>>>>> 51edeb2 (サンプル表示機能作成途中)
           ]
         }
-      }
+      
   end
 end
