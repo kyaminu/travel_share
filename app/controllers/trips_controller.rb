@@ -25,11 +25,15 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       TripUser.create(user_id: current_user.id, trip_id: @trip.id)
+<<<<<<< HEAD
       @trip.recommended_trips[trip_params[:name]][trip_params[:day]].each do |trip_content|
+=======
+    recommended_trips[trip_params[:name]].each do |trip_content|
+>>>>>>> 51edeb2 (サンプル表示機能作成途中)
         @trip.trip_contents.create!(timestamp: trip_content[:timestamp],
                                     content: trip_content[:content])
       end
-      redirect_to @trip, notice: "Trip was successfully created."
+     redirect_to @trip, notice: "Trip was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
