@@ -12,7 +12,6 @@
 
   <body>
     <header>
-      <p>Travel Share</p>
       <% if user_signed_in?%>
         <%= render "shared/logged_in_header"%>
       <%else%>
@@ -20,9 +19,9 @@
       <%end%>
     </header>
     
-    <% flash.each do |message_type, message| %>
-      <%= content_tag :div, message, class: message_type %>
-    <% end %>
+    <!--<% flash.each do |message_type, message| %>-->
+    <!--  <%= content_tag :div, message, class: message_type %>-->
+    <!--<% end %>-->
     <%= yield %>
   </body>
 </html>
