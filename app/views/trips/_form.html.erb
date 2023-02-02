@@ -15,6 +15,8 @@
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.select :name, Trip.trip_types.to_a %>
+    
+    <%= form.text_field :day %>
   </div>
 
   <div>
