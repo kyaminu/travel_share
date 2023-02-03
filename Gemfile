@@ -10,6 +10,8 @@ gem 'bootstrap', '~> 5.0.2'
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
+gem "image_processing",           "1.12.2"
+gem "active_storage_validations", "0.9.8"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
