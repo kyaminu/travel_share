@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
   # GET /trips
   def index
-    @trips = Trip.all
+    @trips = Trip.all.order("created_at DESC")
   end
 
   # GET /trips/1
@@ -25,9 +25,14 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       TripUser.create(user_id: current_user.id, trip_id: @trip.id)
-      @trip.recommended_trips[trip_params[:name]][trip_params[:day]].each do |trip_content|
-        @trip.trip_contents.create!(timestamp: trip_content[:timestamp],
-                                    content: trip_content[:content])
+      trips_by_place = @trip.recommended_trips[trip_params[:name]]
+      (1..trip_params[:day].to_i).each do |day|
+        trips_by_place[day.to_s].each do |trip_content|
+          @trip.trip_contents.create!(
+            timestamp: trip_content[:timestamp],
+            content: trip_content[:content]
+          )
+        end
       end
       redirect_to @trip, notice: "Trip was successfully created."
     else

@@ -1,10 +1,11 @@
 class TripContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_trip_content, only: %i[ show edit update destroy ]
 
   # GET /trip_contents
-  #def index
-  #  @trip_contents = TripContent.all
-  #end
+  def index
+    @trip_contents = TripContent.all
+  end
 
 
   # GET /trip_contents/1

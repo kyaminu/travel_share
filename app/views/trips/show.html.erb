@@ -3,9 +3,10 @@
 <%= render @trip %>
 
 <% @trip.trip_contents.each do |trip| %>
-   <tr>
-     <td><%= trip.content %></td>
-   </tr>
+     <%= trip.timestamp.strftime('%T') %>
+     <%= trip.content %>,</td>
+     <!--<%#= link_to "編集", edit_trip_trip_content_path(@trip)%>-->
+     <!--<%#= link_to "削除", trip_path(@trip), method: :delete%>-->
 <% end %>
 
 <div>

@@ -1,3 +1,19 @@
-<%= link_to "Login", new_user_session_path %>
-<%= link_to "Sign Up", new_user_registration_path %>
-
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Travel Share</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path,class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path,class:"nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<p style="color: green"><%= notice %></p>
