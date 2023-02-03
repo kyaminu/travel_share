@@ -7,7 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <%= link_to "Home", trips_path, class:"nav-link" %>
+          <%= link_to trips_path, class:"nav-link me-" do %>
+            <i class="fa-solid fa-house" style="color: white;"></i>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "Profile", edit_user_registration_path, class:"nav-link" %>
@@ -19,3 +21,4 @@
     </div>
   </div>
 </nav>
+
