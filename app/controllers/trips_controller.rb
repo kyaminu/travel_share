@@ -34,7 +34,7 @@ class TripsController < ApplicationController
           )
         end
       end
-      redirect_to @trip, notice: "Trip was successfully created."
+      redirect_to @trip, notice: "旅程を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1
   def update
     if @trip.update(trip_params)
-      redirect_to @trip, notice: "Trip was successfully updated."
+      redirect_to @trip, notice: "旅程を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,7 +52,7 @@ class TripsController < ApplicationController
   # DELETE /trips/1
   def destroy
     @trip.destroy
-    redirect_to trips_url, notice: "Trip was successfully destroyed."
+    redirect_to trips_url, notice: "旅程を削除しました"
   end
 
   private
