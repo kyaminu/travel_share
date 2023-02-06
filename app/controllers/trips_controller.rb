@@ -4,7 +4,8 @@ class TripsController < ApplicationController
 
   # GET /trips
   def index
-    @trips = Trip.all.order("created_at DESC")
+    @trips = current_user.trips.order("created_at DESC")
+    # @trips = Trip.where(user_id: current_user.id).order("created_at DESC")
   end
 
   # GET /trips/1

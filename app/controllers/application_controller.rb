@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protected
   # 編集画面から画像を受け取れるよう設定
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: %i(image))
+    devise_parameter_sanitizer.permit(:sign_up, keys:  %i[image])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[image])
   end
   
   def after_sign_in_path_for(resource) 
