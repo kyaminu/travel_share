@@ -22,6 +22,7 @@ class TripContentsController < ApplicationController
 
   # POST /trip_contents
   def create
+    #debugger
     trip = Trip.find(params[:trip_id])
     # @trip_content = TripContent.new(trip_content_params)
     # @trip_content.trip_id = trip.id
@@ -29,7 +30,7 @@ class TripContentsController < ApplicationController
     if @trip_content.save
       # trip = Trip.trip_contents()
       # TripContent.create(trip_id: )
-      redirect_to trip_trip_content_path(@trip_content), notice: "Trip content was successfully created."
+      redirect_to trip_path(trip.id), notice: "Trip content was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -47,7 +48,8 @@ class TripContentsController < ApplicationController
   # DELETE /trip_contents/1
   def destroy
     @trip_content.destroy
-    redirect_to trip_contents_url, notice: "Trip content was successfully destroyed."
+
+    redirect_to @trip_content.trip, notice: "Trip content was successfully destroyed."
   end
 
   private

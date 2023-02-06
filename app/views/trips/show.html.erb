@@ -14,20 +14,18 @@
   </div>
 </div>
 
-<div class-"container">
+<div class="container">
   <div class="row">
     <div class="col-6">
       <div class="trip_contents_text_area_margin">
-        <% @trip.trip_contents.each do |trip| %>
+        <% @trip.trip_contents.order(timestamp: :ASC).where.not(id: nil).each do |trip_content| %>
           <div class="mb-3">
-             <%= l trip.timestamp, format: :short %></br>
+             <%= l trip_content.timestamp, format: :short %></br>
              <div class="border rounded-3 bg-light trip_contents_text_area">
-               <%= trip.content%>
+               <%= trip_content.content%>
              </div>
-             <%= link_to "編集", "#", class:"btn btn-outline-secondary btn-sm"%>
-             <%= link_to "削除", "#", class:"btn btn-outline-danger btn-sm"%></br>
-             <!--<%= link_to "編集", edit_trip_trip_content_path(@trip)%>-->
-             <!--<%= link_to "削除", trip_path(@trip), method: :delete%>-->
+             <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
+             <%= link_to "削除", trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-danger btn-sm"%></br>
           </div>
         <% end %>
       </div>
@@ -35,16 +33,16 @@
     
     <div class="col offset text-center mt-3">  
       <!--inputの内容-->
-      <%= form_with url: trip_trip_contents_path(@trip), local: true do |form| %>
+      <%= form_with model: @trip_content, scope: :trip_content,url: trip_trip_contents_path(@trip), local: true do |form %>
 <% 
 =begin
 %>
-  <% if trip_content.errors.any? %>
+  <% if @trip_content.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(trip_content.errors.count, "error") %> prohibited this trip_content from being saved:</h2>
+      <h2><%= pluralize(@trip_content.errors.count, "error") %> prohibited this trip_content from being saved:</h2>
 
       <ul>
-        <% trip_content.errors.each do |error| %>
+        <% @trip_content.errors.each do |error|  %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

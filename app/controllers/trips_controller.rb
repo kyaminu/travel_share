@@ -9,6 +9,8 @@ class TripsController < ApplicationController
 
   # GET /trips/1
   def show
+    @trip_content = @trip.trip_contents.build
+    
   end
 
   # GET /trips/new
@@ -63,6 +65,6 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name,:day)
+      params.require(:trip).permit(:name,:day,:name_of_trip,:when,:total_day)
     end
 end

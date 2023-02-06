@@ -7,19 +7,24 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">旅行名</th>
       <th scope="col">行き先</th>
       <th scope="col">作成日</th>
       <th scope="col">更新日</th>
-      <th scope="col"></th>
+      <th scope="col">いつ</th>
+      <th scope="col">何日</th>
     </tr>
   </thead>
   
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
+        <td><%= trip.name_of_trip%></td>
         <td><%= Trip.trip_types.keys[trip.name] %></td>
         <td><%= l trip.created_at,format: :short %></td>
         <td><%= l trip.updated_at,format: :short %></td>
+        <td><%= trip.when%></td>
+        <td><%= trip.day%></td>
         <td>
           <%= link_to "詳細", trip, class:"btn btn-outline-dark me-3" %>
           <%= link_to "削除", trip, data: { turbo_method: :delete }, class:"btn btn-outline-danger" %>
