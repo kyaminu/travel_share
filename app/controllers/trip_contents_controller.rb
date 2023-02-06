@@ -3,9 +3,8 @@ class TripContentsController < ApplicationController
   before_action :set_trip_content, only: %i[ show edit update destroy ]
 
   # GET /trip_contents
-  def index
-    @trip_contents = TripContent.all
-  end
+  # def index
+  # end
 
 
   # GET /trip_contents/1
@@ -14,7 +13,7 @@ class TripContentsController < ApplicationController
 
   # GET /trip_contents/new
   def new
-    @trip_content = TripContent.new
+    @trip_content = current_user.tripcontent.new
   end
 
   # GET /trip_contents/1/edit

@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -44,10 +43,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   
   def update
-    if account_update_params[:image].present?
+    super
+    if !account_update_params[:image].present?
       resource.image.attach(account_update_params[:image])    
     end
-    super
   end
 
   # DELETE /resource
