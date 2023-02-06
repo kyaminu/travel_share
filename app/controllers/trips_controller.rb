@@ -5,7 +5,6 @@ class TripsController < ApplicationController
   # GET /trips
   def index
     @trips = current_user.trips.order("created_at DESC")
-    # @trips = Trip.where(user_id: current_user.id).order("created_at DESC")
   end
 
   # GET /trips/1
@@ -23,7 +22,7 @@ class TripsController < ApplicationController
 
   # POST /trips
   def create
-    @trip = Trip.new(trip_params)
+    @trip = current_user.trips.new(trip_params)
     if @trip.save
       TripUser.create(user_id: current_user.id, trip_id: @trip.id)
       trips_by_place = @trip.recommended_trips[trip_params[:name]]

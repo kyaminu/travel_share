@@ -4,7 +4,6 @@ class TripContentsController < ApplicationController
 
   # GET /trip_contents
   # def index
-  #   @trip_contents = TripContent.all
   # end
 
 
@@ -14,7 +13,7 @@ class TripContentsController < ApplicationController
 
   # GET /trip_contents/new
   def new
-    @trip_content = TtripContent.new
+    @trip_content = current_user.tripcontent.new
   end
 
   # GET /trip_contents/1/edit
