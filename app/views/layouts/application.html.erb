@@ -8,11 +8,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://kit.fontawesome.com/b4c6f6c944.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header>
-      <p>Travel Share</p>
       <% if user_signed_in?%>
         <%= render "shared/logged_in_header"%>
           
@@ -21,9 +21,9 @@
       <%end%>
     </header>
     
-    <% flash.each do |message_type, message| %>
-      <%= content_tag :div, message, class: message_type %>
-    <% end %>
+    <!--<% flash.each do |message_type, message| %>-->
+    <!--  <%= content_tag :div, message, class: message_type %>-->
+    <!--<% end %>-->
     <%= yield %>
   </body>
 </html>

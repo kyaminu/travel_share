@@ -1,15 +1,32 @@
 <% content_for(:title, '旅程一覧') %>
-<p style="color: green"><%= notice %></p>
+<div style="color: green"><%= notice %></div>
 
-<h1>Trips</h1>
+<h2 class="my-3 ms-4">旅程一覧</h1>
+<%= link_to "+ 旅程を立てる", new_trip_path, class:"btn btn-outline-success float-end me-2" %>
 
-<div id="trips">
-  <% @trips.each do |trip| %>
-    <%= render trip %>
-    <p>
-      <%= link_to "Show this trip", trip %>
-    </p>
-  <% end %>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">行き先</th>
+      <th scope="col">作成日</th>
+      <th scope="col">更新日</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= Trip.trip_types.keys[trip.name] %></td>
+        <td><%= l trip.created_at,format: :short %></td>
+        <td><%= l trip.updated_at,format: :short %></td>
+        <td>
+          <%= link_to "詳細", trip, class:"btn btn-outline-dark me-3" %>
+          <%= link_to "削除", trip, data: { turbo_method: :delete }, class:"btn btn-outline-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New trip", new_trip_path %>
+<%= link_to "+ 旅程を立てる", new_trip_path, class:"btn btn-outline-success float-end me-2" %>

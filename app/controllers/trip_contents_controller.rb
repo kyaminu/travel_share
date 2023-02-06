@@ -1,10 +1,12 @@
 class TripContentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_trip_content, only: %i[ show edit update destroy ]
 
   # GET /trip_contents
   def index
     @trip_contents = TripContent.all
   end
+
 
   # GET /trip_contents/1
   def show
@@ -54,8 +56,8 @@ class TripContentsController < ApplicationController
     def set_trip_content
       @trip_content = TripContent.find(params[:id])
     end
-    
-    
+
+
 
     # Only allow a list of trusted parameters through.
     def trip_content_params
