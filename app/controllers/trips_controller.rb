@@ -65,6 +65,6 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name,:day)
+      params.require(:trip).permit(:name,:day,:name_of_trip,:when,:total_day)
     end
 end
