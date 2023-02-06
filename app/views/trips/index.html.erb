@@ -1,7 +1,7 @@
 <% content_for(:title, '旅程一覧') %>
-<p style="color: green"><%= notice %></p>
+<div style="color: green"><%= notice %></div>
 
-<h2 class="mb-5 ms-4">旅程一覧</h1>
+<h2 class="my-3 ms-4">旅程一覧</h1>
 <%= link_to "+ 旅程を立てる", new_trip_path, class:"btn btn-outline-success float-end me-2" %>
 
 <table class="table">
@@ -18,8 +18,8 @@
     <% @trips.each do |trip| %>
       <tr>
         <td><%= Trip.trip_types.keys[trip.name] %></td>
-        <td><%= trip.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= trip.updated_at.strftime('%Y/%m/%d') %></td>
+        <td><%= l trip.created_at,format: :short %></td>
+        <td><%= l trip.updated_at,format: :short %></td>
         <td>
           <%= link_to "詳細", trip, class:"btn btn-outline-dark me-3" %>
           <%= link_to "削除", trip, data: { turbo_method: :delete }, class:"btn btn-outline-danger" %>
@@ -28,3 +28,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "+ 旅程を立てる", new_trip_path, class:"btn btn-outline-success float-end me-2" %>
