@@ -33,7 +33,7 @@
   </span>
   
   <% if @user.image.attached? %>
-    <%= image_tag @user.image.variant(:display) %>
+    <%= image_tag @user.image.variant(:display),  class: "rounded-circle", size: "200x200" %>
   <% end %>
     
 

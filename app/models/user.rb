@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :trip_users, dependent: :destroy
   has_many :trip_names, through: :trip_users, source: :trip
   has_one_attached :image do |attachable|
-     attachable.variant :display, resize_to_limit: [500, 500]
+     attachable.variant :display, resize_to_limit: [400, 400]
    end
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "must be a valid image format" },
