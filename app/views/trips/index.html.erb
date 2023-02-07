@@ -12,7 +12,6 @@
       <th scope="col">作成日</th>
       <th scope="col">更新日</th>
       <th scope="col">旅行開始日</th>
-      <th scope="col">何日間</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -25,7 +24,6 @@
         <td><%= l trip.created_at,format: :short %></td>
         <td><%= l trip.updated_at,format: :short %></td>
         <td><%= trip.when%></td>
-        <td><%= trip.read_attribute(:day)%></td>
         <td>
           <%= link_to "詳細", trip, class:"btn btn-outline-dark me-3" %>
           <%= link_to "削除", trip, data: { turbo_method: :delete }, class:"btn btn-outline-danger" %>

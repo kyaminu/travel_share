@@ -3,8 +3,8 @@
 <!--showの内容-->
 <div class="container-fluid">
   <div class="d-flex justify-content-between">
-    <%= @trip.name_of_trip%>
     <h2 class="my-3 mx-5 ms-4 col-4">
+      <%= @trip.name_of_trip%>
       <%= "行き先: #{Trip.trip_types.keys[@trip.name]}" %>
     </h2>
     
