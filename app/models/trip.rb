@@ -66,12 +66,10 @@ class Trip < ApplicationRecord
             { timestamp: '21:00:00', content: 'パフェ 珈琲 酒「佐藤」' }
           ],
           "2" => [ #北海道 2日目
-            { timestamp: '10:00:00', content: '札幌市時計台' },
-            { timestamp: '11:30:00', content: 'バリスタート コーヒー' },
-            { timestamp: '12:00:00', content: '大通公園' },
-            { timestamp: '15:00:00', content: '札幌市円山動物園' },
-            { timestamp: '19:00:00', content: 'ジンギスカン 羊飼いの店' },
-            { timestamp: '21:00:00', content: 'パフェ 珈琲 酒「佐藤」' }
+            { timestamp: '9:00:00', content: '函館ハリストス正教会' },
+            { timestamp: '10:30:00', content: '五稜郭公園' },
+            { timestamp: '13:20:00', content: 'カントリーキッチンWALD' },
+            { timestamp: '14:00:00', content: '大沼森林公園' },
           ],
           "3" => [ #北海道 3日目
             { timestamp: '09:00:00', content: 'サロマ湖鶴雅リゾート' },
