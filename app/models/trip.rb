@@ -5,7 +5,6 @@ class Trip < ApplicationRecord
   
   validates :name_of_trip, presence: true, length:{ minimum: 1, maximum: 25 }
   validates :when, presence: true
-  validates :total_day, presence:true, length:{ minimum: 1, maximum: 3}
 
   attr_accessor :day
 

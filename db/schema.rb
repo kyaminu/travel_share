@@ -63,7 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_072752) do
     t.datetime "updated_at", null: false
     t.string "name_of_trip"
     t.date "when"
-    t.integer "total_day"
   end
 
   create_table "users", force: :cascade do |t|

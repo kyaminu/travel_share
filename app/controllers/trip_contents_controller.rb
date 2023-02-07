@@ -6,7 +6,6 @@ class TripContentsController < ApplicationController
   # def index
   # end
 
-
   # GET /trip_contents/1
   def show
   end
@@ -22,14 +21,12 @@ class TripContentsController < ApplicationController
 
   # POST /trip_contents
   def create
-    #debugger
     trip = Trip.find(params[:trip_id])
     # @trip_content = TripContent.new(trip_content_params)
     # @trip_content.trip_id = trip.id
+    #上２行は、下１行にまとめられる
     @trip_content = trip.trip_contents.build(trip_content_params)
     if @trip_content.save
-      # trip = Trip.trip_contents()
-      # TripContent.create(trip_id: )
       redirect_to trip_path(trip.id), notice: "Trip content was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -57,9 +54,7 @@ class TripContentsController < ApplicationController
     def set_trip_content
       @trip_content = TripContent.find(params[:id])
     end
-
-
-
+    
     # Only allow a list of trusted parameters through.
     def trip_content_params
       params.require(:trip_content).permit(:timestamp, :content, :trip_id)

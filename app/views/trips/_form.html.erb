@@ -13,17 +13,23 @@
   <% end %>
 
   <div>
-    <%= form.label :name_of_trip,style: "display: block" %>
-    <%= form.text_area :name_of_trip%>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label "旅行名",style: "display: block" %>
+    <%= form.text_area :name_of_trip, value:"食いだおれ旅行"%>
+    
+    <%= form.label "行き先", style: "display: block" %>
     <%= form.select :name, Trip.trip_types.to_a %>
     
+    <%= form.label "何日間", style: "display: block" %>
     <%= form.number_field :day, min: 1, max: 3, :value => 1%>
+    
+    <%= form.label "旅行開始日", style: "display: block" %>
     <%= form.date_field :when%>
-    <%= form.number_field :total_day%>
+    
+    <!--<%= form.label "何日間", style: "display: block" %>-->
+    <!--<%= form.number_field :total_day, min: 1, max: 3, :value => 1%>-->
   </div>
 
   <div>
-    <%= form.submit%>
+    <%= form.submit "+ 旅程を立てる", class:"btn btn-outline-success me-2" %>
   </div>
 <% end %>
