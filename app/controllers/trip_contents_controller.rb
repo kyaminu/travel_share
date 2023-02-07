@@ -17,6 +17,7 @@ class TripContentsController < ApplicationController
 
   # GET /trip_contents/1/edit
   def edit
+    @trip = Trip.find(params[:trip_id])
   end
 
   # POST /trip_contents
@@ -35,8 +36,9 @@ class TripContentsController < ApplicationController
 
   # PATCH/PUT /trip_contents/1
   def update
+    @trip = Trip.find(params[:trip_id])
     if @trip_content.update(trip_content_params)
-      redirect_to trip_trip_content_path, notice: "Trip content was successfully updated."
+      redirect_to trip_path(@trip.id), notice: "Trip content was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
