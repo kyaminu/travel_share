@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'home#top'
   
   resources :trips do
+    member do
+      get 'share'
+    end
     resources :trip_contents, except: %w[index] 
   end
   devise_for :users, controllers: {
