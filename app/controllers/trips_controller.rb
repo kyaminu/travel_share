@@ -58,9 +58,9 @@ class TripsController < ApplicationController
   end
   
   def share
-    @trip = Trip.new(params[:trip])
-    @trip.share_key  = Digest::SHA1.hexdigest(Time.now.to_s) 。
-    @schedule.save
+    @trip = Trip.find(params[:id])
+    @trip.share_key  = Digest::SHA1.hexdigest(Time.now.to_s)
+    @trip.save!
     redirect_to @trip
   end
   
