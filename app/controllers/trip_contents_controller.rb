@@ -11,9 +11,9 @@ class TripContentsController < ApplicationController
   end
 
   # GET /trip_contents/new
-  def new
-    @trip_content = current_user.tripcontent.new
-  end
+  # def new
+  #   @trip_content = current_user.trip_content.new
+  # end
 
   # GET /trip_contents/1/edit
   def edit
