@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#top'
   
-  resources :trips do
+  resources :trips, except: %w[edit update]  do
     member do
       get 'share'
     end

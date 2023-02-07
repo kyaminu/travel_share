@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: %i[ show edit update destroy ]
+  before_action :set_trip, only: %i[ show destroy ]
 
   # GET /trips
   def index
@@ -19,8 +19,8 @@ class TripsController < ApplicationController
   end
 
   # GET /trips/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /trips
   def create
@@ -43,13 +43,13 @@ class TripsController < ApplicationController
   end
 
   # PATCH/PUT /trips/1
-  def update
-    if @trip.update(trip_params)
-      redirect_to @trip, notice: "旅程を更新しました"
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @trip.update(trip_params)
+  #     redirect_to @trip, notice: "旅程を更新しました"
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /trips/1
   def destroy
