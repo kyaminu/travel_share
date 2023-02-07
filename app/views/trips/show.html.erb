@@ -20,7 +20,6 @@
 </div>
 
 <div class="container">
-  <!--<div class="row">-->
   <div class="d-flex justify-content-around">
     <div class="col-6">
       <div class="trip_contents_text_area_margin">
@@ -37,22 +36,9 @@
       </div>
     </div>
     
+    <!--inputの内容-->
     <div class="col text-end mt-3">  
-      <!--inputの内容-->
       <%= form_with model: @trip_content, scope: :trip_content,url: trip_trip_contents_path(@trip), local: true do |form| %>
-
-        <!--<% if @trip_content.errors.any? %>-->
-        <!--  <div style="color: red">-->
-        <!--    <div><%= pluralize(@trip_content.errors.count, "error") %> prohibited this trip_content from being saved:</div>-->
-      
-        <!--    <ul>-->
-        <!--      <% @trip_content.errors.each do |error|  %>-->
-        <!--        <li><%= error.full_message %></li>-->
-        <!--      <% end %>-->
-        <!--    </ul>-->
-        <!--  </div>-->
-        <!--<% end %>-->
-
         <div>
           <%= form.datetime_field :timestamp,class:"input_trip_contents_datetime_field border rounded-3 bg-light" %></br>
           <%= form.text_area :content, class:"input_trip_contents_text_area border rounded-3" %></br>
@@ -62,4 +48,5 @@
       </div>
     </div>
 </div>
+
 <%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>

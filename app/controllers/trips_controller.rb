@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   def show
     @trip_content = @trip.trip_contents.build
-    
+
   end
 
   # GET /trips/new
@@ -56,14 +56,14 @@ class TripsController < ApplicationController
     @trip.destroy
     redirect_to trips_url, notice: "旅程を削除しました"
   end
-  
+
   def share
     @trip = Trip.new(params[:trip])
-    @trip.share_key  = Digest::SHA1.hexdigest(Time.now.to_s) 。
+    @trip.share_key  = Digest::SHA1.hexdigest(Time.now.to_s)
     @schedule.save
     redirect_to @trip
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
