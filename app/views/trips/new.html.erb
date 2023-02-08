@@ -1,9 +1,8 @@
 <% content_for(:title, '旅程新規作成') %>
-
-<h2 class="m-5">旅程新規作成</h2>
+<div class="d-flex justify-content-between mt-3">
+  <div class="h2 ms-3">旅程新規作成</div>
+  <%= link_to "一覧に戻る", trips_path, class:"btn btn-dark me-3" %>
+</div>
 <div class="text-center">
   <%= render "form", trip: @trip %>
-<div>
-    <%= link_to "一覧に戻る", trips_path, class:"btn btn-dark ms-1" %>
-  </div>
 </div>

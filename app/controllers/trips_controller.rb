@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: %i[ show edit update destroy ]
+  before_action :set_trip, only: %i[ show destroy ]
 
   # GET /trips
   def index
@@ -10,7 +10,7 @@ class TripsController < ApplicationController
   # GET /trips/1
   def show
     @trip_content = @trip.trip_contents.build
-    
+
   end
 
   # GET /trips/new
@@ -19,8 +19,8 @@ class TripsController < ApplicationController
   end
 
   # GET /trips/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /trips
   def create
@@ -43,27 +43,27 @@ class TripsController < ApplicationController
   end
 
   # PATCH/PUT /trips/1
-  def update
-    if @trip.update(trip_params)
-      redirect_to @trip, notice: "旅程を更新しました"
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @trip.update(trip_params)
+  #     redirect_to @trip, notice: "旅程を更新しました"
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /trips/1
   def destroy
     @trip.destroy
     redirect_to trips_url, notice: "旅程を削除しました"
   end
-  
+
   def share
     @trip = Trip.find(params[:id])
-    @trip.share_key  = Digest::SHA1.hexdigest(Time.now.to_s)
+    @trip.share_key = Digest::SHA1.hexdigest(Time.now.to_s)
     @trip.save!
     redirect_to @trip
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

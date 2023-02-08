@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'shared_trips/show'
   root 'home#top'
   
-  resources :trips do
+  resources :trips, except: %w[edit update]  do
     member do
       post 'share'
       
