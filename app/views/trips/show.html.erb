@@ -1,8 +1,7 @@
-<!--<% content_for(:title, @trip.trip_types) %>-->
-
+<% content_for(:title, @trip.name_of_trip) %>
 <% shared = current_page?('/shared_trip') %>
 
-<!--showの内容-->
+<!--タイトル-->
 <div class="container-fluid">
   <div class="d-flex justify-content-between">
     <div class="my-3 mx-5 ms-4 col-4">
@@ -14,6 +13,7 @@
         </h4>
     </div>
     
+    <!--ナビゲーションのすぐ下のボタン-->
     <div class="mt-4 ps-5 col-6 d-flex justify-content-end">
       <% if !shared %>
         <% if @trip.share_key.nil? %>
@@ -36,6 +36,7 @@
   </div>
 </div>
 
+<!--予定一覧-->
 <div class="container">
   <div class="d-flex justify-content-around">
     <div class="col-6">

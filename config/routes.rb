@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
+  #ログインしている時のルートパス
   authenticated :user do
     root to: 'trips#index', as: :user_root
   end
   
   root 'home#top'
-  
   get 'shared_trips/show'
   
-  resources :trips, except: %w[edit update]  do
+  resources :trips, only: %w[ index new create show destroy share]  do
     member do
       post 'share'
     end
-    resources :trip_contents, except: %w[index] 
+    resources :trip_contents, only: %w[ new create show edit update destroy] 
   end
   
   devise_for :users, controllers: {

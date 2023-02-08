@@ -6,12 +6,6 @@ class TripsController < ApplicationController
     @trips = current_user.trips.order("created_at DESC")
   end
 
-  # GET /trips/1
-  def show
-    @trip_content = @trip.trip_contents.build
-
-  end
-
   # GET /trips/new
   def new
     @trip = current_user.trips.new
@@ -35,6 +29,11 @@ class TripsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+  
+  # GET /trips/1
+  def show
+    @trip_content = @trip.trip_contents.build
   end
 
   # DELETE /trips/1
