@@ -12,13 +12,16 @@
   </head>
 
   <body>
+    <% shared = current_page?('/shared_trip') %>
     <header>
-      <% if user_signed_in?%>
-        <%= render "shared/logged_in_header"%>
-        
-      <%else%>
-        <%= render "shared/not_logged_in_header"%>
-      <%end%>
+      <% if !shared %>
+        <% if user_signed_in?%>
+          <%= render "shared/logged_in_header"%>
+          
+        <%else%>
+          <%= render "shared/not_logged_in_header"%>
+        <%end%>
+      <% end %>
     </header>
     
     <%= render 'layouts/flashes' %>

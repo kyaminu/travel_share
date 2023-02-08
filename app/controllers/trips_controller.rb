@@ -31,7 +31,7 @@ class TripsController < ApplicationController
       (1..trip_params[:day].to_i).each do |day|
         trips_by_place[day.to_s].each do |trip_content|
           @trip.trip_contents.create!(
-            timestamp: trip_content[:timestamp],
+            timestamp: "#{@trip.when + day - 1} #{trip_content[:timestamp]}",
             content: trip_content[:content]
           )
         end

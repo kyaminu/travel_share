@@ -15,8 +15,22 @@
     </div>
       
     <div class="mt-4 ps-5 col-3">
-      <%= link_to "共有する", "#", class:"btn btn-outline-primary" %>
-      <%= link_to "一覧に戻る", trips_path, class:"btn btn-dark ms-1"%>
+      <% if !shared %>
+        <% if @trip.share_key.nil? %>
+          <%= button_to "共有する",share_trip_path(@trip),class:"btn btn-outline-primary"%>
+        <% else %>
+          <div data-controller="clipboard">
+            URL: <input data-clipboard-target="source" type="text" value= <%="#{shared_trip_url}?h=#{@trip.share_key}"%> readonly>
+            <a href="#" class="btn btn-secondary" 
+               data-clipboard-target="copy_button" 
+               data-action="clipboard#copy">
+              <i class="bi bi-clipboard"></i> Copy to Clipboard
+            </a>
+          </div>
+          <%#= "#{shared_trip_url}?h=#{@trip.share_key}" %>
+        <% end %>
+        <%= link_to "一覧に戻る", trips_path, class:"btn btn-dark ms-1"%>
+      <% end %>
     </div>
   </div>
 </div>
@@ -42,20 +56,18 @@
     
     <!--inputの内容-->
     <div class="col text-end mt-3">  
-      <%= form_with model: @trip_content, scope: :trip_content,url: trip_trip_contents_path(@trip), local: true do |form| %>
-        <div>
-          <%= form.datetime_field :timestamp,class:"input_trip_contents_datetime_field border rounded-3 bg-light" %></br>
-          <%= form.text_area :content, class:"input_trip_contents_text_area border rounded-3" %></br>
-          <%= form.submit "予定を追加する", class:"float-end mt-3 btn btn-success" %>
-        </div>
+      <% if !shared %>
+        <%= form_with model: @trip_content, scope: :trip_content,url: trip_trip_contents_path(@trip), local: true do |form| %>
+          <div>
+            <%= form.datetime_field :timestamp,class:"input_trip_contents_datetime_field border rounded-3 bg-light" %></br>
+            <%= form.text_area :content, class:"input_trip_contents_text_area border rounded-3" %></br>
+            <%= form.submit "予定を追加する", class:"float-end mt-3 btn btn-success" %>
+          </div>
+        <% end %>
       <% end %>
-      </div>
+    </div>
    </div>
-      <% if @trip.share_key.nil? %>
-        <%= button_to "共有用URLを発行する",share_trip_path(@trip)%>
-      <% else %>
-        <%= "#{shared_trip_url}?h=#{@trip.share_key}" %>
-      <% end %>
 </div>
-
-<%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>
+<% if !shared %>
+  <%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>
+<% end %>

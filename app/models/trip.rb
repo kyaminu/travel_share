@@ -3,7 +3,8 @@ class Trip < ApplicationRecord
   has_many :user_trips, through: :trip_users, source: :user
   has_many :trip_contents, dependent: :destroy
   
-  validates :name_of_trip, presence: true, length:{ minimum: 1, maximum: 25 }
+  validates :name, presence: true
+  validates :name_of_trip, presence: true, length:{ maximum: 25 }
   validates :when, presence: true
   validates :name, presence: true
 
