@@ -1,7 +1,6 @@
 <!--<% content_for(:title, @trip.trip_types) %>-->
 
 <% shared = current_page?('/shared_trip') %>
-<%#= shared %>
 
 <!--showの内容-->
 <div class="container-fluid">
@@ -57,7 +56,6 @@
       <% else %>
         <%= "#{shared_trip_url}?h=#{@trip.share_key}" %>
       <% end %>
- 
 </div>
 
 <%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>
