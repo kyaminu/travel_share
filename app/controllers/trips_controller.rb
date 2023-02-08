@@ -44,11 +44,6 @@ class TripsController < ApplicationController
 
   # PATCH/PUT /trips/1
   # def update
-  #   if @trip.update(trip_params)
-  #     redirect_to @trip, notice: "旅程を更新しました"
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
   # end
 
   # DELETE /trips/1
@@ -73,6 +68,6 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:name,:day,:name_of_trip,:when,:total_day)
+      params.require(:trip).permit(:name,:day,:name_of_trip,:when)
     end
 end

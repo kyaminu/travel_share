@@ -1,5 +1,12 @@
 ja:
+  activerecord:
+    attributes:
+      trip:
+        when: 旅行開始日
+        name_of_trip: 旅行名
+        name: 行き先
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%m/%d %H:%M"
+    

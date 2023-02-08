@@ -24,9 +24,7 @@
       <% end %>
     </header>
     
-    <!--<% flash.each do |message_type, message| %>-->
-    <!--  <%= content_tag :div, message, class: message_type %>-->
-    <!--<% end %>-->
+    <%= render 'layouts/flashes' %>
     <%= yield %>
   </body>
 </html>
