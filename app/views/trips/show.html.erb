@@ -20,7 +20,15 @@
         <% if @trip.share_key.nil? %>
           <%= button_to "共有する",share_trip_path(@trip),class:"btn btn-outline-primary"%>
         <% else %>
-          <%= "#{shared_trip_url}?h=#{@trip.share_key}" %>
+          <div data-controller="clipboard">
+            URL: <input data-clipboard-target="source" type="text" value= <%="#{shared_trip_url}?h=#{@trip.share_key}"%> readonly>
+            <a href="#" class="btn btn-secondary" 
+               data-clipboard-target="copy_button" 
+               data-action="clipboard#copy">
+              <i class="bi bi-clipboard"></i> Copy to Clipboard
+            </a>
+          </div>
+          <%#= "#{shared_trip_url}?h=#{@trip.share_key}" %>
         <% end %>
         <%= link_to "一覧に戻る", trips_path, class:"btn btn-dark ms-1"%>
       <% end %>
