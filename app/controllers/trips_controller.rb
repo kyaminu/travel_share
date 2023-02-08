@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_trip, only: %i[ show destroy ]
 
   # GET /trips
@@ -15,12 +14,8 @@ class TripsController < ApplicationController
 
   # GET /trips/new
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.new
   end
-
-  # GET /trips/1/edit
-  # def edit
-  # end
 
   # POST /trips
   def create
@@ -42,13 +37,9 @@ class TripsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trips/1
-  # def update
-  # end
-
   # DELETE /trips/1
   def destroy
-    @trip.destroy
+    @trip.destroy!
     redirect_to trips_url, notice: "旅程を削除しました"
   end
 
@@ -59,11 +50,10 @@ class TripsController < ApplicationController
     redirect_to @trip
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = current_user.trips.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

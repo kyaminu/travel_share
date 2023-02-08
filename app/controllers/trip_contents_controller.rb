@@ -1,11 +1,6 @@
 class TripContentsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_trip_content, only: %i[ show edit update destroy ]
-  before_action :set_trip, only: %i[ new create edit update]
-
-  # GET /trip_contents
-  # def index
-  # end
+  before_action :set_trip, only: %i[ new create edit update ]
 
   # GET /trip_contents/1
   def show
@@ -43,19 +38,19 @@ class TripContentsController < ApplicationController
 
   # DELETE /trip_contents/1
   def destroy
-    @trip_content.destroy
-
+    @trip_content.destroy!
     redirect_to @trip_content.trip, notice: "Trip content was successfully destroyed."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip_content
-      @trip_content = TripContent.find(params[:id])
+      set_trip
+      @trip_content = @trip.trip_contents.find(params[:id])
     end
     
     def set_trip
-      @trip = Trip.find(params[:trip_id])
+      @trip = current_user.trips.find(params[:trip_id])
     end
     
     # Only allow a list of trusted parameters through.
