@@ -42,12 +42,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   
-  def update
-    super
-    if !account_update_params[:image].present?
-      resource.image.attach(account_update_params[:image])    
-    end
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
   # def destroy
@@ -68,6 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
     def after_update_path_for(resource)
+      flash[:notice] = 'ユーザー情報を更新しました'
       edit_user_registration_path 
     end
 
