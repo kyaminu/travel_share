@@ -26,7 +26,7 @@ class TripContentsController < ApplicationController
     #上２行は、下１行にまとめられる
     @trip_content = @trip.trip_contents.build(trip_content_params)
     if @trip_content.save
-      redirect_to trip_path(@trip.id), notice: "Trip content was successfully created."
+      redirect_to trip_path(@trip.id), notice: "予定を作成しました"
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class TripContentsController < ApplicationController
   # PATCH/PUT /trip_contents/1
   def update
     if @trip_content.update(trip_content_params)
-      redirect_to trip_path(@trip.id), notice: "Trip content was successfully updated."
+      redirect_to trip_path(@trip.id), notice: "予定を更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
