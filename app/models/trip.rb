@@ -4,9 +4,8 @@ class Trip < ApplicationRecord
   has_many :trip_contents, dependent: :destroy
   
   validates :name, presence: true
-  validates :name_of_trip, presence: true, length:{ maximum: 25 }
   validates :when, presence: true
-  validates :name, presence: true
+  validates :name_of_trip, presence: true, length:{ maximum: 25 }
 
   attr_accessor :day
 

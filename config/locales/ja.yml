@@ -5,6 +5,9 @@ ja:
         when: 旅行開始日
         name_of_trip: 旅行名
         name: 行き先
+      trip_content:
+        timestamp: 予定日時
+        content: 予定
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

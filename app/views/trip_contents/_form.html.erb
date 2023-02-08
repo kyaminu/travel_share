@@ -2,7 +2,7 @@
   <%= form_with(model: [Trip.find(params[:trip_id]), trip_content]) do |form| %>
     <% if trip_content.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(trip_content.errors.count, "error") %> prohibited this trip_content from being saved:</h2>
+        <h2><%= pluralize(trip_content.errors.count, "点のエラー") %> により保存できませんでした</h2>
   
         <ul>
           <% trip_content.errors.each do |error| %>
