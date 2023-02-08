@@ -2,7 +2,7 @@
 
   <% if trip.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+      <h2><%= pluralize(trip.errors.count, "エラー") %> により、保存できませんでした</h2>
 
       <ul>
         <% trip.errors.each do |error| %>
