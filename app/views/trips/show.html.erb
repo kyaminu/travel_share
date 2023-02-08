@@ -1,5 +1,8 @@
 <!--<% content_for(:title, @trip.trip_types) %>-->
 
+<% shared = current_page?('/shared_trip') %>
+<%#= shared %>
+
 <!--showの内容-->
 <div class="container-fluid">
   <div class="d-flex justify-content-between">
@@ -29,8 +32,10 @@
              <div class="border rounded-3 bg-light trip_contents_text_area">
                <%= trip_content.content%>
              </div>
-             <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
-             <%= link_to "削除", trip_trip_content_path(@trip,trip_content), data: { turbo_method: :delete }, class:"btn btn-outline-danger btn-sm"%></br>
+             <% if !shared %>
+               <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
+               <%= link_to "削除", trip_trip_content_path(@trip,trip_content), data: { turbo_method: :delete }, class:"btn btn-outline-danger btn-sm"%></br>
+             <% end %>
           </div>
         <% end %>
       </div>
@@ -46,7 +51,13 @@
         </div>
       <% end %>
       </div>
-    </div>
+   </div>
+      <% if @trip.share_key.nil? %>
+        <%= button_to "共有用URLを発行する",share_trip_path(@trip)%>
+      <% else %>
+        <%= "#{shared_trip_url}?h=#{@trip.share_key}" %>
+      <% end %>
+ 
 </div>
 
 <%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>
