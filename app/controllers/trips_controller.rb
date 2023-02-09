@@ -3,7 +3,7 @@ class TripsController < ApplicationController
 
   # GET /trips
   def index
-    @trips = current_user.trips.order("created_at DESC")
+    @trips = current_user.trips.order(when: :DESC)
   end
 
   # GET /trips/new
