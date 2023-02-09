@@ -1,10 +1,11 @@
 class Trip < ApplicationRecord
   has_many :trip_users, dependent: :destroy
   has_many :trip_contents, dependent: :destroy
-  
+
   validates :name, presence: true
   validates :when, presence: true
   validates :name_of_trip, presence: true, length:{ maximum: 25 }
+  validates :share_key, uniqueness: true, allow_blank: true
 
   attr_accessor :day
 

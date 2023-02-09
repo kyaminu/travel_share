@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[ share ]
   before_action :set_trip, only: %i[ show destroy share]
 
   # GET /trips
@@ -18,7 +17,9 @@ class TripsController < ApplicationController
     if @trip.save
       TripUser.create(user_id: current_user.id, trip_id: @trip.id)
       trips_by_place = @trip.recommended_trips[trip_params[:name]]
-      (1..trip_params[:day].to_i).each do |day|
+      day = trip_params[:day].to_i
+      day = 3 if day > 3
+      (1..day).each do |day|
         trips_by_place[day.to_s].each do |trip_content|
           @trip.trip_contents.create!(
             timestamp: "#{@trip.when + day - 1} #{trip_content[:timestamp]}",
