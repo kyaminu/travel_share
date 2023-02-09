@@ -17,10 +17,10 @@
     <div class="mt-4 ps-5 col-6 d-flex justify-content-end">
       <% if !shared %>
         <% if @trip.share_key.nil? %>
-          <%= button_to "共有する", share_trip_path(@trip),class:"btn btn-outline-primary"%>
+          <%= button_to "共有する", share_trip_path(@trip), class:"btn btn-outline-primary"%>
         <% else %>
           <div data-controller="clipboard">
-            <input class="share_btn border rounded-3" data-clipboard-target="source" type="text" value= <%="#{share_trip_url}?h=#{@trip.share_key}"%> readonly>
+            <input class="share_btn border rounded-3" data-clipboard-target="source" type="text" value=<%="#{shared_trip_url}?h=#{@trip.share_key}"%> readonly>
             <a href="#" class="btn btn-secondary" 
                data-clipboard-target="copy_button" 
                data-action="clipboard#copy">
@@ -70,6 +70,7 @@
     </div>
    </div>
 </div>
+
 <% if !shared %>
   <%= button_to "この旅程を削除する", @trip, method: :delete, class:"btn btn-outline-danger me-5 my-3 float-end" %>
 <% end %>

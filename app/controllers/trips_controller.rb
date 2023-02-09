@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[ show destroy ]
+  # skip_before_action :authenticate_user!, only: %i[ share ]
+  before_action :set_trip, only: %i[ show destroy share]
 
   # GET /trips
   def index
@@ -43,7 +44,6 @@ class TripsController < ApplicationController
   end
 
   def share
-    @trip = Trip.find(params[:id])
     @trip.share_key = Digest::SHA1.hexdigest(Time.now.to_s)
     @trip.save!
     redirect_to @trip

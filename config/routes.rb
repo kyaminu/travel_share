@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   
   root 'home#top'
-  get 'shared_trips/show'
+  get 'shared_trip', to: 'shared_trips#show'
   
   resources :trips, only: %w[ index new create show destroy share]  do
     member do
