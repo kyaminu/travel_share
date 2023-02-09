@@ -39,7 +39,7 @@ class TripContentsController < ApplicationController
   # DELETE /trip_contents/1
   def destroy
     @trip_content.destroy!
-    redirect_to @trip_content.trip, notice: "Trip content was successfully destroyed."
+    redirect_to @trip_content.trip, notice: "予定を削除しました"
   end
 
   private
