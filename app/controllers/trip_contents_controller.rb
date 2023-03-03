@@ -55,6 +55,6 @@ class TripContentsController < ApplicationController
     
     # Only allow a list of trusted parameters through.
     def trip_content_params
-      params.require(:trip_content).permit(:timestamp, :content, :trip_id)
+      params.require(:trip_content).permit(:scheduled_time, :schedule, :trip_id)
     end
 end

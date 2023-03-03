@@ -17,12 +17,12 @@
     <div class="text-center">
       <div class="mb-3">
         <%= form.label "旅行名",style: "display: block", class:"text-start" %>
-        <%= form.text_area :name_of_trip, value:"食いだおれ旅行" %>
+        <%= form.text_area :title, value:"食いだおれ旅行" %>
       </div>
       
       <div class="mb-3">
         <%= form.label "行き先", style: "display: block", class:"text-start" %>
-        <%= form.select :name, Trip.trip_types.to_a, { include_blank: '選択してください'}, class:"trip_new_form" %>
+        <%= form.select :destination, Trip.trip_types.to_a, { include_blank: '選択してください'}, class:"trip_new_form" %>
       </div>
       
       <div class="mb-3">
@@ -32,7 +32,7 @@
       
       <div class="mb-5">
         <%= form.label "旅行開始日", style: "display: block", class:"text-start" %>
-        <%= form.date_field :when, class:"trip_new_form"%>
+        <%= form.date_field :start_at, class:"trip_new_form"%>
       </div>
     </div>
   </div>

@@ -9,10 +9,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i[image])
   end
   
+  # ログイン後の遷移先をtrips一覧に変更している
   def after_sign_in_path_for(resource) 
     trips_path
   end
   
+  # ログアウト後の遷移先をルートパスに変更している
   def after_sign_out_path_for(resource) 
     root_path
   end
