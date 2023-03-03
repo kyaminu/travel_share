@@ -1,4 +1,4 @@
-<% content_for(:title, @trip.name_of_trip) %>
+<% content_for(:title, @trip.title) %>
 <% shared = current_page?('/shared_trip') %>
 
 <!--タイトル-->
@@ -6,10 +6,10 @@
   <div class="d-flex justify-content-between">
     <div class="my-3 mx-5 ms-4 col-4">
         <h2>
-        <%= @trip.name_of_trip %>
+        <%= @trip.title %>
         </h2>
         <h4>
-        <%= "行き先: #{Trip.trip_types.keys[@trip.name]}"%>
+        <%= "行き先: #{Trip.trip_types.keys[@trip.destination]}"%>
         </h4>
     </div>
     
@@ -42,11 +42,11 @@
     <div class="row">
       <div class="col-6">
         <div class="trip_contents_text_area_margin">
-          <% @trip.trip_contents.order(timestamp: :ASC).where.not(id: nil).each do |trip_content| %>
+          <% @trip.trip_contents.order(scheduled_time: :ASC).where.not(id: nil).each do |trip_content| %>
             <div class="mb-3">
-               <%= l trip_content.timestamp, format: :short %></br>
+               <%= l trip_content.scheduled_time, format: :short %></br>
                <div class="border rounded-3 bg-light trip_contents_text_area">
-                 <%= trip_content.content%>
+                 <%= trip_content.schedule%>
                </div>
                <% if !shared %>
                  <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
@@ -62,8 +62,8 @@
         <% if !shared %>
           <%= form_with model: @trip_content, scope: :trip_content,url: trip_trip_contents_path(@trip), local: true do |form| %>
             <div>
-              <%= form.datetime_field :timestamp,class:"input_trip_contents_datetime_field border rounded-3 bg-light" %></br>
-              <%= form.text_area :content, class:"input_trip_contents_text_area border rounded-3" %></br>
+              <%= form.datetime_field :scheduled_time,class:"input_trip_contents_datetime_field border rounded-3 bg-light" %></br>
+              <%= form.text_area :schedule, class:"input_trip_contents_text_area border rounded-3" %></br>
               <%= form.submit "予定を追加する", class:"float-end mt-3 btn btn-success" %>
             </div>
           <% end %>

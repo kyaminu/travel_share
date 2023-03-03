@@ -2,12 +2,12 @@ ja:
   activerecord:
     attributes:
       trip:
-        when: 旅行開始日
-        name_of_trip: 旅行名
-        name: 行き先
+        start_at: 旅行開始日
+        title: 旅行名
+        destination: 行き先
       trip_content:
-        timestamp: 予定日時
-        content: 予定
+        scheduled_time: 予定日時
+        schedule: 予定
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

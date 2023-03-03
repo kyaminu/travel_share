@@ -18,11 +18,11 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><%= trip.name_of_trip%></td>
-        <td><%= Trip.trip_types.keys[trip.name] %></td>
+        <td><%= trip.title%></td>
+        <td><%= Trip.trip_types.keys[trip.destination] %></td>
         <td><%= l trip.created_at,format: :short %></td>
         <td><%= l trip.updated_at,format: :short %></td>
-        <td><%= trip.when%></td>
+        <td><%= trip.start_at%></td>
         <td>
           <%= link_to "詳細", trip, class:"btn btn-outline-dark me-3" %>
           <%= link_to "削除", trip, data: { turbo_method: :delete }, class:"btn btn-outline-danger" %>
