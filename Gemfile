@@ -77,6 +77,11 @@ group :test do
   gem "webdrivers"
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
+
 group :production do
   gem "pg", "1.3.5"
   gem "aws-sdk-s3", "1.114.0", require: false
