@@ -5,9 +5,11 @@ class User < ApplicationRecord
   has_many :trips, through: :trip_users
   
   has_one_attached :image do |attachable|
-     attachable.variant :display, resize_to_limit: [400, 400]
-   end
-   
+    attachable.variant :display, resize_to_limit: [400, 400]
+  end
+
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: true
+
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
                                       message: "must be a valid image format" },
                       size:         { less_than: 5.megabytes,
@@ -15,9 +17,9 @@ class User < ApplicationRecord
                                       
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-         
+  devise  :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable
+
   def update_with_password(params, *options)
     params.delete(:current_password)
     
