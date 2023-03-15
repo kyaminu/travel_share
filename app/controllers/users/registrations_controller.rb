@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
         clean_up_passwords resource
         set_minimum_password_length
-        respond_with resource, status: :see_other # 登録失敗時のrespond_withにerror出したいので、ここで303 statusを追加
+        respond_with resource, status: :see_other
     end
   end
   
