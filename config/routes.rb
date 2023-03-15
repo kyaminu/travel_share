@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   resources :trips, only: %w[ index new create show destroy share]  do
     post 'share', on: :member
-    resources :trip_contents, only: %w[ new create show edit update destroy] 
+    resources :trip_contents, only: %w[ new create edit update destroy] 
   end
 
   get 'shared_trip', to: 'shared_trips#show'

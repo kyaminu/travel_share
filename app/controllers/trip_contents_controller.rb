@@ -1,5 +1,5 @@
 class TripContentsController < ApplicationController
-  before_action :set_trip_content, only: %i[ show edit update destroy ]
+  before_action :set_trip_content, only: %i[ edit update destroy ]
   before_action :set_trip, only: %i[ new create edit update ]
 
   # GET /trip_contents/new
@@ -17,10 +17,6 @@ class TripContentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-  
-  # GET /trip_contents/1
-  def show
   end
 
   # GET /trip_contents/1/edit
