@@ -35,7 +35,6 @@ class TripsController < ApplicationController
   
   # GET /trips/1
   def show
-    @trip_content = @trip.trip_contents.build
   end
 
   # DELETE /trips/1
