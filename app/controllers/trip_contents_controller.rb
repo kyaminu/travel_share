@@ -1,6 +1,6 @@
 class TripContentsController < ApplicationController
   before_action :set_trip_content, only: %i[ edit update destroy ]
-  before_action :set_trip, only: %i[ new create edit update ]
+  before_action :set_trip, only: %i[ create ]
 
   # GET /trip_contents/new
   def new
