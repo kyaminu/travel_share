@@ -21,10 +21,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
   
-  def show
-    @user = User.find(params[:id])
-  end
-  
   protected
 
     def after_update_path_for(resource)
