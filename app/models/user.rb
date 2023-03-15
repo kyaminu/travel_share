@@ -11,16 +11,16 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: true
 
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
-                                      message: "must be a valid image format" },
+                                      message: "指定のフォーマットのみ登録可能です" },
                       size:         { less_than: 5.megabytes,
-                                      message:   "should be less than 5MB" }
+                                      message:   "画像のサイズは5MBまでです" }
                                       
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
-  def update_with_password(params, *options)
+  def update_with_password(params)
     params.delete(:current_password)
     
     if params[:password].blank?
@@ -28,7 +28,7 @@ class User < ApplicationRecord
         params.delete(:password_confirmation) if params[:password_confirmation].blank?
     end
 
-    result = update(params, *options)
+    result = update(params)
 
     clean_up_passwords
     result

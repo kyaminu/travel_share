@@ -22,8 +22,8 @@
           <div data-controller="clipboard">
             <input class="share_btn border rounded-3" data-clipboard-target="source" type="text" value=<%="#{shared_trip_url}?h=#{@trip.share_key}"%> readonly>
             <a href="#" class="btn btn-secondary" 
-               data-clipboard-target="copy_button" 
-               data-action="clipboard#copy">
+                data-clipboard-target="copy_button" 
+                data-action="clipboard#copy">
               <i class="bi bi-clipboard"></i> URLをコピーする
             </a>
           </div>
@@ -44,14 +44,14 @@
         <div class="trip_contents_text_area_margin">
           <% @trip.trip_contents.order(scheduled_time: :ASC).where.not(id: nil).each do |trip_content| %>
             <div class="mb-3">
-               <%= l trip_content.scheduled_time, format: :short %></br>
-               <div class="border rounded-3 bg-light trip_contents_text_area">
-                 <%= trip_content.schedule%>
-               </div>
-               <% if !shared %>
-                 <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
-                 <%= link_to "削除", trip_trip_content_path(@trip,trip_content), data: { turbo_method: :delete }, class:"btn btn-outline-danger btn-sm"%></br>
-               <% end %>
+              <%= l trip_content.scheduled_time, format: :short %></br>
+                <div class="border rounded-3 bg-light trip_contents_text_area">
+                  <%= trip_content.schedule%>
+                </div>
+                <% if !shared %>
+                  <%= link_to "編集", edit_trip_trip_content_path(@trip,trip_content), class:"btn btn-outline-secondary btn-sm"%>
+                  <%= link_to "削除", trip_trip_content_path(@trip,trip_content), data: { turbo_method: :delete }, class:"btn btn-outline-danger btn-sm"%></br>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -69,7 +69,7 @@
           <% end %>
         <% end %>
       </div>
-   </div>
+    </div>
   </div>
 </div>
 
